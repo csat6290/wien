@@ -7,7 +7,7 @@ lng: 16.373118,
 title: "Stephansdom"
 };
 
-let startLayer = L.titeLayer.provider("BasemapAT.grau");
+let startLayer = L.tileLayer.provider("BasemapAT.grau");
 
 let map = L.map("map", {
     center: [ stephansdom.lat, stephansdom.lng],
@@ -20,5 +20,21 @@ let map = L.map("map", {
 let layerControl = L.control.layers(
     {
         "BasemapAT Grau": startLayer,
-        "Basemap Standard": L.titeLayer.provider("BasemapAT.basemap"),
+       
+        "Basemap Standard": L.tileLayer.provider("BasemapAT.basemap"),
+       
+        "Basemap High-DPI": L.tileLayer.provider("BasemapAT.highdpi"),
+       
+        "Basemap Beschriftung": L.tileLayer.provider("BasemapAT.overlay"),
+    
+        "Basemap Gelände": L.tileLayer.provider("BasemapAT.terrain"),
+        
+        "Basemap Oberfläche": L.tileLayer.provider("BasemapAT.surface"),
+        
+        "Basemap Orthofoto": L.tileLayer.provider("BasemapAT.orthofoto"),
+
+        "Basemap mit Orthofot und Beschriftung": L.layerGroup([
+            L.tileLayer.provider("BasemapAT.orthofoto"),
+            L.tileLayer.provider("BasemapAT.overlay"),
+        ])
     }).addTo(map);
