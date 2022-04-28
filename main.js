@@ -17,3 +17,7 @@ let map = L.map("map", {
     ],
 });
 
+let layerControl = L.control.layers(
+    {
+        "BasemapAT Grau": startLayer,
+    }).addTo(map);
