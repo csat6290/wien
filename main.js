@@ -20,4 +20,5 @@ let map = L.map("map", {
 let layerControl = L.control.layers(
     {
         "BasemapAT Grau": startLayer,
+        "Basemap Standard": L.titeLayer.provider("BasemapAT.basemap"),
     }).addTo(map);
