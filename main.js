@@ -40,4 +40,7 @@ let layerControl = L.control.layers(
     }).addTo(map);
 
     layerControl.expand();
-    
+
+    let sightLayer = L.featureGroup();
+
+    layerControl.addOverlay(sightLayer, "Sehenswürdigkeiten");
