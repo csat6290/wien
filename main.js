@@ -50,3 +50,5 @@ let mkr = L.marker([
 
 
 sightLayer.addTo(map);
+
+L.control.scale().addTo(map);
