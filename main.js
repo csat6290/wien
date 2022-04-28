@@ -47,3 +47,6 @@ layerControl.addOverlay(sightLayer, "Sehenswürdigkeiten");
 let mkr = L.marker([
     stephansdom.lat, stephansdom.lng
 ]).addTo(sightLayer);
+
+
+sightLayer.addTo(map);
