@@ -38,6 +38,7 @@ let layerControl = L.control.layers({
     ])
 }).addTo(map);
 
+/*
 layerControl.expand();
 
 let sightLayer = L.featureGroup();
@@ -51,6 +52,8 @@ let mkr = L.marker([
 
 sightLayer.addTo(map);
 
+*/
+
 L.control.scale({
     imperial: false,
 }).addTo(map);
@@ -60,6 +63,6 @@ L.control.fullscreen().addTo(map);
 
 let miniMap = new L.Control.MiniMap(
     L.tileLayer.provider("BasemapAT"),{
-        toggledisplay: true
+        toggleDisplay: true
     }
 ).addTo(map);
