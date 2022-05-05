@@ -113,7 +113,7 @@ async function loadLines(url) {
     L.geoJSON(geojson).addTo(overlay)
 }
 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Fußgängerzonen Vienna Sightseeing
 async function loadZones(url) {
@@ -128,7 +128,7 @@ async function loadZones(url) {
     L.geoJSON(geojson).addTo(overlay)
 }
 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
+loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Hotels und Unterkünfte 
 async function loadHotels(url) {
@@ -144,7 +144,3 @@ async function loadHotels(url) {
 }
 
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
-
-
-
-
