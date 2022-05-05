@@ -107,7 +107,7 @@ loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 async function loadStops(url) {
     let response = await fetch(url);
     let geojson = await response.json();
-    console.log(geojson);
+    //console.log(geojson);
 
     let overlay = L.featureGroup();
     layerControl.addOverlay(overlay, "Haltestellen Vienna Sightseeing");
@@ -132,7 +132,7 @@ async function loadStops(url) {
     }).addTo(overlay)
 }
 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSBIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Liniennetz Vienna Sightseeing
 async function loadLines(url) {
