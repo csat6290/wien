@@ -107,7 +107,7 @@ loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 async function loadStops(url) {
     let response = await fetch(url);
     let geojson = await response.json();
-    //console.log(geojson);
+    console.log(geojson);
 
     let overlay = L.featureGroup();
     layerControl.addOverlay(overlay, "Haltestellen Vienna Sightseeing");
@@ -115,7 +115,7 @@ async function loadStops(url) {
 
     L.geoJSON(geojson, {
         pointToLayer: function(geoJsonPoint, latlng){
-            //console.log(geoJsonPoint.properties);
+            console.log(geoJsonPoint.properties);
             let popup = `
             <strong>${geoJsonPoint.properties.LINE_NAME}</strong><br>
             Station ${geoJsonPoint.properties.STAT_NAME}
