@@ -69,6 +69,7 @@ let miniMap = new L.Control.MiniMap(
     }
 ).addTo(map);
 
+//Sehenswürdigkeiten
 async function loadSites(url) {
     let response = await fetch(url);
     let geojson = await response.json();
@@ -82,3 +83,19 @@ async function loadSites(url) {
 }
 
 loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+
+
+//Haltestellen Vienna Sightseeing
+async function loadStops(url) {
+    let response = await fetch(url);
+    let geojson = await response.json();
+    //console.log(geojson);
+
+    let overlay = L.featureGroup();
+    layerControl.addOverlay(overlay, "Haltestellen");
+    overlay.addTo(map);
+
+    L.geoJSON(geojson).addTo(overlay)
+}
+
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSBIGOGD&srsName=EPSG:4326&outputFormat=json");
