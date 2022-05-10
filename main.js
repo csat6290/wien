@@ -199,7 +199,7 @@ async function loadHotels(url) {
             } else if (geoJsonPoint.properties.BETRIEBSART == "P") {
                 return L.marker(latlng, {
                     icon: L.icon({
-                        iconUrl: "icons/lodging_Ostar.png",
+                        iconUrl: "icons/lodging_0star.png",
                         iconAnchor: [16, 37],
                         popupAnchor: [0, -37]
                     })
