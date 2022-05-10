@@ -190,8 +190,9 @@ async function loadHotels(url) {
             return L.marker(latlng, {
                 icon: L.icon({
                     iconUrl:`icons/bus_${geoJsonPoint.properties.LINE_ID}.png`,
-                    iconAnchor: [16, 37],
-                    popupAnchor: [0, -37]
+                
+                    //iconAnchor: [16, 37],
+                    //popupAnchor: [0, -37]
                 
                 })
             }).bindPopup(popup)
