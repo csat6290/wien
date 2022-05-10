@@ -187,16 +187,38 @@ async function loadHotels(url) {
             <a href="${geoJsonPoint.properties.KONTAKT_EMAIL}">E-Mail</a>
             <a href="${geoJsonPoint.properties.WEBLINK1}">Weblink</a>
             `;
-            return L.marker(latlng, {
-                icon: L.icon({
-                    iconUrl: "icons/photo.png",
-                    iconAnchor: [16, 37],
-                    popupAnchor: [0, -37]
-                })
-            }).bindPopup(popup)
+            
+            if (geoJsonPoint.properties.BETRIEBSART == "H") {
+                return L.marker(latlng, {
+                    icon: L.icon({
+                        iconUrl: "icons/hotel_0star.png",
+                        iconAnchor: [16,37],
+                        popupAnchor: [0,-37]
+                    })
+                }).bindPopup(popup);
+            } else if (geoJsonPoint.properties.BETRIEBSART == "P") {
+                return L.marker(latlng, {
+                    icon: L.icon({ 
+                        iconUrl: "icons/lodging_2.png",
+                        iconAnchor: [16,37],
+                        popupAnchor: [0,-37]
+                    })
+                }).bindPopup(popup);
+            } else {
+                return L.marker(latlng, {
+                    icon: L.icon({
+                        iconUrl: "icons/apartment-2.png",
+                        iconAnchor: [16,37],
+                        popupAnchor: [0,-37]
+                    })
+                }).bindPopup(popup);
+            }
+             
         }
-    }).addTo(overlay)
+
+    }).addTo(overlay);
 }
+
 
            
                 
