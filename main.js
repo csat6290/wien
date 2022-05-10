@@ -80,7 +80,7 @@ async function loadSites(url) {
     overlay.addTo(map);
 
     L.geoJSON(geojson, {
-        pointToLayer: function(geoJsonPoint, latlng){
+        pointToLayer: function (geoJsonPoint, latlng) {
             //console.log(geoJsonPoint.properties.NAME);
             let popup = `
             <img src="${geoJsonPoint.properties.THUMBNAIL}"alt=""><br>
@@ -91,7 +91,7 @@ async function loadSites(url) {
             `;
             return L.marker(latlng, {
                 icon: L.icon({
-                    iconUrl:"icons/photo.png",
+                    iconUrl: "icons/photo.png",
                     iconAnchor: [16, 37],
                     popupAnchor: [0, -37]
                 })
@@ -114,7 +114,7 @@ async function loadStops(url) {
     overlay.addTo(map);
 
     L.geoJSON(geojson, {
-        pointToLayer: function(geoJsonPoint, latlng){
+        pointToLayer: function (geoJsonPoint, latlng) {
             console.log(geoJsonPoint.properties);
             let popup = `
             <strong>${geoJsonPoint.properties.LINE_NAME}</strong><br>
@@ -122,10 +122,10 @@ async function loadStops(url) {
             `;
             return L.marker(latlng, {
                 icon: L.icon({
-                    iconUrl:`icons/bus_${geoJsonPoint.properties.LINE_ID}.png`,
+                    iconUrl: `icons/bus_${geoJsonPoint.properties.LINE_ID}.png`,
                     iconAnchor: [16, 37],
                     popupAnchor: [0, -37]
-                
+
                 })
             }).bindPopup(popup)
         }
@@ -175,7 +175,7 @@ async function loadHotels(url) {
     overlay.addTo(map);
 
     L.geoJSON(geojson, {
-        pointToLayer: function(geoJsonPoint, latlng){
+        pointToLayer: function (geoJsonPoint, latlng) {
             console.log(geoJsonPoint.properties);
             let popup = `
             <strong>${geoJsonPoint.properties.BETRIEB}</strong><br>
@@ -189,15 +189,17 @@ async function loadHotels(url) {
             `;
             return L.marker(latlng, {
                 icon: L.icon({
-                    iconUrl:`icons/bus_${geoJsonPoint.properties.LINE_ID}.png`,
-                
-                    //iconAnchor: [16, 37],
-                    //popupAnchor: [0, -37]
-                
+                    iconUrl: "icons/photo.png",
+                    iconAnchor: [16, 37],
+                    popupAnchor: [0, -37]
                 })
             }).bindPopup(popup)
         }
     }).addTo(overlay)
 }
+
+           
+                
+           
 
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
