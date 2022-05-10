@@ -187,41 +187,36 @@ async function loadHotels(url) {
             <a href="${geoJsonPoint.properties.KONTAKT_EMAIL}">E-Mail</a>
             <a href="${geoJsonPoint.properties.WEBLINK1}">Weblink</a>
             `;
-            
+
             if (geoJsonPoint.properties.BETRIEBSART == "H") {
                 return L.marker(latlng, {
                     icon: L.icon({
                         iconUrl: "icons/hotel_0star.png",
-                        iconAnchor: [16,37],
-                        popupAnchor: [0,-37]
+                        iconAnchor: [16, 37],
+                        popupAnchor: [0, -37]
                     })
                 }).bindPopup(popup);
             } else if (geoJsonPoint.properties.BETRIEBSART == "P") {
                 return L.marker(latlng, {
-                    icon: L.icon({ 
+                    icon: L.icon({
                         iconUrl: "icons/lodging_2.png",
-                        iconAnchor: [16,37],
-                        popupAnchor: [0,-37]
+                        iconAnchor: [16, 37],
+                        popupAnchor: [0, -37]
                     })
                 }).bindPopup(popup);
             } else {
                 return L.marker(latlng, {
                     icon: L.icon({
                         iconUrl: "icons/apartment-2.png",
-                        iconAnchor: [16,37],
-                        popupAnchor: [0,-37]
+                        iconAnchor: [16, 37],
+                        popupAnchor: [0, -37]
                     })
                 }).bindPopup(popup);
             }
-             
+
         }
 
     }).addTo(overlay);
 }
-
-
-           
-                
-           
 
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
