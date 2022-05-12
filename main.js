@@ -100,7 +100,7 @@ async function loadSites(url) {
     }).addTo(overlay)
 }
 
-loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+//loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
 
 
 //Haltestellen Vienna Sightseeing
@@ -132,7 +132,7 @@ async function loadStops(url) {
     }).addTo(overlay)
 }
 
-loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
+//loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Liniennetz Vienna Sightseeing
 async function loadLines(url) {
@@ -147,7 +147,7 @@ async function loadLines(url) {
     L.geoJSON(geojson).addTo(overlay)
 }
 
-//loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Fußgängerzonen Vienna Sightseeing
 async function loadZones(url) {
@@ -188,6 +188,8 @@ async function loadHotels(url) {
             <a href="${geoJsonPoint.properties.WEBLINK1}">Weblink</a>
             `;
 
+            let icon;
+
             if (geoJsonPoint.properties.BETRIEBSART == "H") {
                 return L.marker(latlng, {
                     icon: L.icon({
@@ -219,4 +221,15 @@ async function loadHotels(url) {
     }).addTo(overlay);
 }
 
-loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
+//loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
+
+/* oder:
+
+let icon;
+if (geoJsonPoint.properties.BETRIEBSART == "H") {icon = icon/hotel_0star.png}
+else if (geoJsonPoint.properties.BETRIEBSART == "P") {icon = icon/lodging_0star.png}
+esle {icon = icon/apartment-2.png}
+
+return 
+
+*/
