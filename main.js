@@ -211,7 +211,7 @@ async function loadHotels(url) {
     let geojson = await response.json();
     console.log(geojson);
 
-    let overlay = L.featureGroup();
+    let overlay = L.markerClusterGroup();
     layerControl.addOverlay(overlay, "Hotels und Unterkünfte");
     overlay.addTo(map);
 
@@ -260,7 +260,10 @@ async function loadHotels(url) {
         }
 
     }).addTo(overlay);
+
 }
+
+
 
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
 
