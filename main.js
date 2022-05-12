@@ -187,7 +187,9 @@ async function loadZones(url) {
         style: function (feature) {
             return {
                 color: "#F012BE",
-                fillOpacity: 0.4,
+                weight: 1,
+                opacity: 0.1,
+                fillOpacity: 0.1,
             }
         }
 
