@@ -210,6 +210,11 @@ async function loadHotels(url) {
     let geojson = await response.json();
     //console.log(geoJsonPoint.properties.BETRIEB);
 
+    //Hotels nach Name sortieren
+    geojson.features.sort(function(a, b){
+        return a.properties.BETRIEB.toLowerCase() > b.properties.BETRIEB
+    })
+
     let overlay = L.markerClusterGroup({
         disableClusteringAtZoom: 17
     });
