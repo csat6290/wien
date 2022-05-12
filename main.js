@@ -144,35 +144,40 @@ async function loadLines(url) {
     layerControl.addOverlay(overlay, "Liniennetz Vienna Sightseeing");
     overlay.addTo(map);
 
-    L.geoJSON(geojson, {
-        style: function(feature) {
-            //console.log(feature)
+L.geoJSON(geojson, {
 
-            let colours = {
-                "Red Line" : "#FF4136",
-                "Yellow Line" : "#FFDC00",
-                "Blue Line" : "#0074D9",
-                "Green Line" : "#2ECC40",
-                "Grey Line" : "#AAAAAA",
-                "Orange Line" : "#FF851B",
-            };
-
-
-            return {
-                color: `${colors[feature.properties.LINE_NAME]}`,
-                weight: 4,
-                dashArray: [10, 6]
-            }
-        }
-    }).bindPopup(function (layer) {
-        return `
-        <h4>${layer.feature.properties.LINE_NAME}</h4>
-        von: ${layer.feature.properties.FROM.NAME}
-        <br>
-        nach: ${layer.feature.properties.TO_NAME}
-        `;
-    }).addto(overlay);
-}
+    style: function(feature){
+    
+    let colors={
+    "Red Line": "#FF$136",
+    "Yellow Line": "#FFDC00",
+    "Blue Line": "#0074D9",
+    "Green Line":"#2ECC40",
+    "Grey Line": "#AAAAAA",
+    "Orange Line": "#FF851B"
+    
+    
+    };
+    return {
+    
+    
+    color: `${colors[feature.properties.LINE_NAME]}`,
+    weight: 4,
+    dashArray:[10,6]
+    }
+    
+    }
+    
+    }).bindPopup(function (layer){
+    return `
+    <h4> ${layer.feature.properties.LINE_NAME} </h4>
+    von: ${layer.feature.properties.FROM_NAME}
+    <br>
+    nach: ${layer.feature.properties.TO_NAME}
+    
+    `;
+    }).addTo(overlay);
+    }
 
 loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
