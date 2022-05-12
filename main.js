@@ -269,13 +269,3 @@ async function loadHotels(url) {
 
 loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
 
-/* oder:
-
-let icon;
-if (geoJsonPoint.properties.BETRIEBSART == "H") {icon = icon/hotel_0star.png}
-else if (geoJsonPoint.properties.BETRIEBSART == "P") {icon = icon/lodging_0star.png}
-esle {icon = icon/apartment-2.png}
-
-return 
-
-*/
