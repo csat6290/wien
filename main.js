@@ -114,7 +114,7 @@ async function loadStops(url) {
 
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
-            console.log(geoJsonPoint.properties);
+            //console.log(geoJsonPoint.properties);
             let popup = `
             <strong>${geoJsonPoint.properties.LINE_NAME}</strong><br>
             Station ${geoJsonPoint.properties.STAT_NAME}
@@ -224,7 +224,7 @@ async function loadHotels(url) {
             
             searchList.innerHTML += ` <option value= "${geoJsonPoint.properties.BETRIEB}"></option`; 
 
-            console.log(document.querySelector("#searchList"));
+            //console.log(document.querySelector("#searchList"));
             
             //console.log(` <option value= "${geoJsonPoint.properties.BETRIEB}"></option` );
             
@@ -271,6 +271,13 @@ async function loadHotels(url) {
         }
 
     }).addTo(overlay);
+
+    // zeigt in der Console die Suchaufträge auf
+
+    let form = document.querySelector("#searchForm");
+    form.suchen.onclick = function() {
+        console.log(form.hotel.value);
+    }
 
 }
 
