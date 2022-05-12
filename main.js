@@ -272,7 +272,7 @@ async function loadHotels(url) {
 
     }).addTo(overlay);
 
-    // zeigt in der Console die Suchaufträge auf
+    // zeigt in der Console die Suchaufträge auf und enabled die Funktion
 
     let form = document.querySelector("#searchForm");
     form.suchen.onclick = function() {
