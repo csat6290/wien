@@ -208,7 +208,7 @@ loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&vers
 async function loadHotels(url) {
     let response = await fetch(url);
     let geojson = await response.json();
-    console.log(geojson);
+    //console.log(geoJsonPoint.properties.BETRIEB);
 
     let overlay = L.markerClusterGroup({
         disableClusteringAtZoom: 17
@@ -218,8 +218,18 @@ async function loadHotels(url) {
 
     L.geoJSON(geojson, {
         pointToLayer: function (geoJsonPoint, latlng) {
-            console.log(geoJsonPoint.properties);
+            
+            //searchList machen mit der Console
+
+            
+            searchList.innerHTML += ` <option value= "${geoJsonPoint.properties.BETRIEB}"></option`; 
+
+            console.log(document.querySelector("#searchList"));
+            
+            //console.log(` <option value= "${geoJsonPoint.properties.BETRIEB}"></option` );
+            
             let popup = `
+    
             <strong>${geoJsonPoint.properties.BETRIEB}</strong><br>
             <hr>
             Betriebsart: ${geoJsonPoint.properties.BETRIEBSART_TXT}<br>
