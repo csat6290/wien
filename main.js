@@ -100,7 +100,7 @@ async function loadSites(url) {
     }).addTo(overlay)
 }
 
-//loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
+loadSites("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:SEHENSWUERDIGOGD&srsName=EPSG:4326&outputFormat=json");
 
 
 //Haltestellen Vienna Sightseeing
@@ -132,7 +132,7 @@ async function loadStops(url) {
     }).addTo(overlay)
 }
 
-//loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
+loadStops("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKHTSVSLOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Liniennetz Vienna Sightseeing
 async function loadLines(url) {
@@ -144,7 +144,32 @@ async function loadLines(url) {
     layerControl.addOverlay(overlay, "Liniennetz Vienna Sightseeing");
     overlay.addTo(map);
 
-    L.geoJSON(geojson).addTo(overlay)
+    L.geoJSON(geojson, {
+        style: function(feature) {
+            //console.log(feature)
+
+            let colours = {
+                "Red Line" : "#FF4136",
+                "Yellow Line" : "#FFDC00",
+                "Blue Line" : "#0074D9",
+                "Green Line" : "#2ECC40",
+                "Grey Line" : "#AAAAAA",
+                "Orange Line" : "#FF851B",
+            };
+
+
+            return {
+                color: `${colors[feature.properties.LINE_NAME]}`
+            }
+        }
+    }).bindPopup(function (layer) {
+        return `
+        <h4>${layer.feature.properties.LINE_NAME}</h4>
+        von: ${layer.feature.properties.FROM.NAME}
+        <br>
+        nach: ${layer.feature.properties.TO_NAME}
+        `;
+    }).addto(overlay);
 }
 
 loadLines("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:TOURISTIKLINIEVSLOGD&srsName=EPSG:4326&outputFormat=json");
@@ -162,7 +187,7 @@ async function loadZones(url) {
     L.geoJSON(geojson).addTo(overlay)
 }
 
-//loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
+loadZones("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:FUSSGEHERZONEOGD&srsName=EPSG:4326&outputFormat=json");
 
 // Hotels und Unterkünfte 
 async function loadHotels(url) {
@@ -221,7 +246,7 @@ async function loadHotels(url) {
     }).addTo(overlay);
 }
 
-//loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
+loadHotels("https://data.wien.gv.at/daten/geo?service=WFS&request=GetFeature&version=1.1.0&typeName=ogdwien:UNTERKUNFTOGD&srsName=EPSG:4326&outputFormat=json");
 
 /* oder:
 
